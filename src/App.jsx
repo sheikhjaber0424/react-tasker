@@ -1,12 +1,16 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import TaskBoard from "./components/task/TaskBoard";
 
 export default function App() {
   return (
     <>
       <Header />
-      <Hero></Hero>
+      <div className="flex flex-col justify-center items-center">
+        <Hero></Hero>
+        <TaskBoard></TaskBoard>
+      </div>
       <Footer />
     </>
   );
