@@ -39,10 +39,19 @@ export default function TaskBoard() {
     setTaskToUpdate(task);
     setShowAddModal(true);
   }
+
+  function handleCloseModal() {
+    setShowAddModal(false);
+    setTaskToUpdate(null);
+  }
   return (
     <section className="mb-20" id="tasks">
       {ShowAddModal && (
-        <AddTaskModal onSave={handleAddTask} taskToUpdate={taskToUpdate} />
+        <AddTaskModal
+          onSave={handleAddTask}
+          taskToUpdate={taskToUpdate}
+          onCloseClick={handleCloseModal}
+        />
       )}
       <div className="container">
         <div className="p-2 flex justify-end">
