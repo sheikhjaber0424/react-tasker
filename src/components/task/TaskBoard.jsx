@@ -62,6 +62,16 @@ export default function TaskBoard() {
     newTasks[taskIndex].isFavourite = !newTasks[taskIndex].isFavourite;
     setTasks(newTasks);
   }
+
+  function handleSearch(searchTerm) {
+    console.log(searchTerm);
+
+    const filteredTasks = tasks.filter((task) =>
+      task.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setTasks([...filteredTasks]);
+  }
   return (
     <section className="mb-20" id="tasks">
       {ShowAddModal && (
@@ -73,7 +83,7 @@ export default function TaskBoard() {
       )}
       <div className="container">
         <div className="p-2 flex justify-end">
-          <SearchTask></SearchTask>
+          <SearchTask onSearch={handleSearch}></SearchTask>
         </div>
 
         <div className="rounded-xl border border-[rgba(206,206,206,0.12)] bg-[#1D212B] px-6 py-8 md:px-9 md:py-16">
