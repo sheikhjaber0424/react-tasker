@@ -3,6 +3,7 @@ import AddTaskModal from "./AddTaskModal";
 import SearchTask from "./SearchTask";
 import TaskActions from "./TaskActions";
 import TaskList from "./TaskList";
+
 export default function TaskBoard() {
   const defaultTask = {
     id: crypto.randomUUID(),
@@ -54,6 +55,13 @@ export default function TaskBoard() {
     setTasks([...tasks]);
   }
 
+  function handleFavourite(taskId) {
+    const taskIndex = tasks.findIndex((task) => task.id == taskId);
+
+    const newTasks = [...tasks];
+    newTasks[taskIndex].isFavourite = !newTasks[taskIndex].isFavourite;
+    setTasks(newTasks);
+  }
   return (
     <section className="mb-20" id="tasks">
       {ShowAddModal && (
@@ -77,6 +85,7 @@ export default function TaskBoard() {
             tasks={tasks}
             onEdit={handleEditTask}
             onDelete={handleDeleteTask}
+            onFav={handleFavourite}
           ></TaskList>
         </div>
       </div>
